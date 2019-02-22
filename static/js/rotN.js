@@ -23,6 +23,7 @@ function get_data()
 {
     var phrase = $("#plaintext").val();
     $("#ciphertext").text(rot(phrase, parseInt($("#rotcipher").val())));
+    $("#ciphertext2").text(rot(phrase, parseInt($("#rotcipher").val())));
     $("#text-banner").show();
 }
 

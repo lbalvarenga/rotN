@@ -25,3 +25,9 @@ function get_data()
     $("#ciphertext").text(rot(phrase, parseInt($("#rotcipher").val())));
     $("#text-banner").show();
 }
+
+var input = document.getElementById("plaintext");
+input.addEventListener("keyup", function(event) {
+    if (event.keyCode == 13)
+        document.getElementById("submit-btn").click();
+});

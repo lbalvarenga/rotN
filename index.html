@@ -15,8 +15,9 @@
 </head>
 
 <body>
-    <div class="alert alert-primary alert-dismissible fade show m-0" role="alert" style="border-radius: 0px;">
-        Rotated text: <strong>CIPHER</strong>
+    <div class="alert alert-primary alert-dismissible fade show m-0" role="alert" id="text-banner"
+        style="display: none; border-radius: 0px;">
+        Rotated text: <strong id="ciphertext">CIPHER</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -28,20 +29,21 @@
 
         <hr class="my-4">
 
+        <input type="text" class="form-control mb-2" id="plaintext" placeholder="Input text here">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <select class="custom-select" id="inputGroupSelect02" style="
+                <select class="custom-select" id="rotcipher" style="
                     border-right: 0px;
                     border-top-right-radius: 0px;
                     border-bottom-right-radius: 0px;
                 ">
-                    <option selected>ROT Cipher</option>
-                    <option value="13">ROT13</option>
+                    <option value="13" selected>ROT13</option>
+                    <option value="12">ROT12</option>
                 </select>
             </div>
-            <input type="text" class="form-control" placeholder="Your (cipher) text here">
+            
             <div class="input-group-append">
-                <button type="button" class="btn btn-primary">Encode/Decode</button>
+                <button type="button" value="Submit" class="btn btn-primary" onclick="get_data()">Encode/Decode</button>
             </div>
         </div>
     </div>

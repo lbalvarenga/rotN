@@ -27,6 +27,8 @@ function rot(phrase, n, decode)
 function cipher(decode)
 {
     var phrase = $('#plain-text').val();
+    if (phrase == "")
+        return;
     var n = $('#rot-n').val();
 
     var ciphertext = rot(phrase, parseInt(n), decode);
@@ -38,7 +40,7 @@ function cipher(decode)
     $('html, body').animate({
         scrollTop: parseInt($('#rotated-text-list').offset().top)
     }, 1000);
-    
+
     return;
 }
 

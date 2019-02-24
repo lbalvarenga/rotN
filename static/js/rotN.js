@@ -14,7 +14,6 @@ function rot(phrase, n, decode)
                 if (String.fromCharCode(char.toLowerCase().charCodeAt(0) + n) > 'z')
                 {
                     char = String.fromCharCode('a'.charCodeAt(0) + (char.charCodeAt(0) - 'z'.charCodeAt(0) + (n - 1)));
-                    console.log(('a'.charCodeAt(0) + (char.charCodeAt(0) - 'z'.charCodeAt(0) + (n - 1))));
                 }
                 else
                     char = String.fromCharCode(char.charCodeAt(0) + n);
@@ -33,7 +32,12 @@ function cipher(decode)
     var ciphertext = rot(phrase, parseInt(n), decode);
 
     $('#rotated-text').text(ciphertext);
-    $('#rotated-text-list').show();
+    $('#rotated-text-list').slideDown();
+
+    // Scroll to rotated-text-list
+    $('html, body').animate({
+        scrollTop: parseInt($('#rotated-text-list').offset().top)
+    }, 1000);
 }
 
 function copy_fallback(element_id)
@@ -73,6 +77,10 @@ function copy(element_id)
 }
 
 $('#rotated-text-list').hide();
+
+$('#plain-text').on('input', function() {
+    $('#rotated-text-list').slideUp();
+});
 
 // Enable popovers
 $(function() {

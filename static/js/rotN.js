@@ -1,6 +1,9 @@
 function rot(phrase, n, decode)
 {
     var rotphrase = "";
+    if (decode)
+        n = 26 - n;
+
     for (var i = 0; i < phrase.length; ++i)
     {
         var char = phrase[i];
@@ -8,10 +11,10 @@ function rot(phrase, n, decode)
         {
             if (char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z')
             {
-                if (char.toLowerCase().charCodeAt(0) < 'a'.charCodeAt(0) + n)
-                    char = String.fromCharCode(char.charCodeAt(0) + n);
+                if (String.fromCharCode(char.charCodeAt(0) + n) > 'z')
+                    char = String.fromCharCode('a'.charCodeAt(0) + (char.charCodeAt(0) - 'z'.charCodeAt(0) + (n - 1)));
                 else
-                    char = String.fromCharCode(char.charCodeAt(0) - n);
+                    char = String.fromCharCode(char.charCodeAt(0) + n);
             }
         }
         rotphrase += char;

@@ -38,6 +38,8 @@ function cipher(decode)
     $('html, body').animate({
         scrollTop: parseInt($('#rotated-text-list').offset().top)
     }, 1000);
+    
+    return;
 }
 
 function copy_fallback(element_id)
@@ -59,6 +61,7 @@ function copy_fallback(element_id)
     }
 
     document.body.removeChild(textarea);
+    return;
 }
 
 function copy(element_id)
@@ -66,14 +69,21 @@ function copy(element_id)
     if (!navigator.clipboard)
     {
         copy_fallback(element_id);
+
+        $('#copy-data').popover('show');
+        setTimeout(function() {
+            $('#copy-data').popover('hide');
+        }, 1000);
         return;
     }
+
     navigator.clipboard.writeText($(element_id).text()).then(function() {
         $('#copy-data').popover('show');
         setTimeout(function() {
             $('#copy-data').popover('hide');
         }, 1000);
     });
+    return;
 }
 
 $('#rotated-text-list').hide();

@@ -3,7 +3,9 @@ A ROT Cipher Encoder/Decoder available [here](https://lukeathedev.github.io/rotN
 
 ## How does it work?
 
-<b>rotN</b> simply rotates characters of a given text by N positions. A special case of N would be 13, since rotating it twice will yield the original text, as seen below:
+<b>rotN</b> simply rotates characters of a given text by N positions. A special case of N would be 13, since rotating it twice would yield the original text:
+<br><br>
+
 ![rot13](https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/ROT13_table_with_example.svg/2000px-ROT13_table_with_example.svg.png)
 
 ## Is it useful?

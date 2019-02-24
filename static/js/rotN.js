@@ -11,8 +11,11 @@ function rot(phrase, n, decode)
         {
             if (char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z')
             {
-                if (String.fromCharCode(char.charCodeAt(0) + n) > 'z')
+                if (String.fromCharCode(char.toLowerCase().charCodeAt(0) + n) > 'z')
+                {
                     char = String.fromCharCode('a'.charCodeAt(0) + (char.charCodeAt(0) - 'z'.charCodeAt(0) + (n - 1)));
+                    console.log(('a'.charCodeAt(0) + (char.charCodeAt(0) - 'z'.charCodeAt(0) + (n - 1))));
+                }
                 else
                     char = String.fromCharCode(char.charCodeAt(0) + n);
             }

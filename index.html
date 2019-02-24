@@ -15,51 +15,65 @@
 </head>
 
 <body>
-    <div class="alert alert-primary alert-dismissible fade show m-0" role="alert" id="text-banner"
-        style="display:none; border-radius: 0px;">
-        Rotated text: <strong id="ciphertext">CIPHER</strong>
-        <button type="button" class="btn btn-secondary float-right p-0 px-2" onclick="
-            const el = document.createElement('textarea');
-            el.value = document.getElementById('ciphertext').innerHTML;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-            $('#copied').show();
-            setTimeout(function(){ $('#copied').hide(); }, 2000);
+    <div class="jumbotron mb-0" style="border-radius: 0px;">
 
-        ">
-            Copy
-        </button>
-    </div>
-
-    <div class="jumbotron" style="border-top-left-radius: 0px; border-top-right-radius: 0px;">
         <h1 class="display-4">rotN by <a href="https://github.com/lukeathedev" target="_blank">lukeathedev</a></h1>
         <p class="lead">A simple ROT Cipher Encoder/Decoder.</p>
 
         <hr class="my-4">
 
-        <input type="text" class="form-control mb-2" id="plaintext" placeholder="Input text here">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <select class="custom-select" id="rotcipher" style="
-                    border-right: 0px;
-                    border-top-right-radius: 0px;
-                    border-bottom-right-radius: 0px;
-                ">
-                    <option value="13" selected>ROT 13</option>
+        <textarea type="text" class="form-control mb-2" id="plain-text" rows="2"
+            placeholder="Text to encode/decode"></textarea>
+
+        <div class="input-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">ROT</span>
+                </div>
+
+                <select class="custom-select" id="rot-n">
+                    <option value="13" selected>13</option>
+                    <option value="12">12</option>
+                    <option value="11">11</option>
+                    <option value="10">10</option>
+                    <option value="9">09</option>
+                    <option value="8">08</option>
+                    <option value="7">07</option>
+                    <option value="6">06</option>
+                    <option value="5">05</option>
+                    <option value="4">04</option>
+                    <option value="3">03</option>
+                    <option value="2">02</option>
+                    <option value="1">01</option>
                 </select>
-            </div>
-            
-            <div class="input-group-append">
-                <button type="button" value="Submit" class="btn btn-primary" id="submit-btn" onclick="get_data()">Encode/Decode</button>
+
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-outline-primary" onclick="cipher(false)">Encode</button>
+                    <button type="button" class="btn btn-outline-secondary" onclick="cipher(true) ">Decode</button>
+                </div>
             </div>
         </div>
+
     </div>
 
-    <div class="alert alert-secondary fixed-bottom m-0" id="copied" role="alert" style="display: none; border-radius: 0px;">
-        Copied to clipboard: <strong id="ciphertext2"></strong>
-      </div>
+    <div class="list-group" id="rotated-text-list">
+        <a class="text-white list-group-item list-group-item-action flex-column align-items-start active"
+            id="rotated-text-item" style="border-top-left-radius: 0px; border-top-right-radius: 0px;">
+
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Rotated Text</h5>
+                <small>
+                    <button type="button" class="btn btn-light btn-sm" data-container="body" data-toggle="popover"
+                        data-placement="bottom" data-content="Copied to clipboard!" id="copy-data"
+                        onclick="copy('#rotated-text')">
+                        Copy
+                    </button>
+                </small>
+            </div>
+
+            <p class="mb-1" id="rotated-text">...</p>
+        </a>
+    </div>
 
     <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

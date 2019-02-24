@@ -36,8 +36,34 @@ function cipher(decode)
     $('#rotated-text-list').show();
 }
 
+function copy_fallback(element_id)
+{
+    var textarea = document.createElement('textarea');
+    textarea.value = $(element_id).text();
+
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+
+    try
+    {
+        document.execCommand('copy');
+    }
+    catch (err)
+    {
+        console.error('Could not copy to clipboard.');
+    }
+
+    document.body.removeChild(textarea);
+}
+
 function copy(element_id)
 {
+    if (!navigator.clipboard)
+    {
+        copy_fallback(element_id);
+        return;
+    }
     navigator.clipboard.writeText($(element_id).text()).then(function() {
         $('#copy-data').popover('show');
         setTimeout(function() {
